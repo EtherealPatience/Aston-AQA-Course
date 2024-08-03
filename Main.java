@@ -23,6 +23,8 @@ public class Main {
         printArray(Task11.fillArray(new int[100]));
         printSeparator();
         printArray(Task12.changeArray(new int[]{1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1}));
+        printSeparator();
+        printMatrix(Task13.fillDiagonalElements(new int[5][5]));
 
     }
 
@@ -34,5 +36,13 @@ public class Main {
         for(int i = 0; i < arr.length; i++)
             System.out.print(arr[i] + " ");
         System.out.println();
+    }
+
+    public static void printMatrix(int[][] matrix){
+        for(int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++)
+                System.out.print(matrix[i][j] + " ");
+            System.out.println();
+        }
     }
 }
