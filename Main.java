@@ -10,7 +10,9 @@ public class Main {
         printSeparator();
         System.out.println(Task5.checkSumInRange(4,6));
         printSeparator();
-        Task6.isPositiveNumber(0);
+        Task6.checkNumberPositivity(0);
+        printSeparator();
+        System.out.println(Task7.isNumberPositive(0));
 
     }
 
