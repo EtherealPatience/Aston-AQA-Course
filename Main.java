@@ -25,7 +25,8 @@ public class Main {
         printArray(Task12.changeArray(new int[]{1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1}));
         printSeparator();
         printMatrix(Task13.fillDiagonalElements(new int[5][5]));
-
+        printSeparator();
+        printArray(Task14.initArray(4, 8));
     }
 
     public static void printSeparator(){
