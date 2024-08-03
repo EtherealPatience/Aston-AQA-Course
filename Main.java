@@ -4,6 +4,7 @@ public class Main {
         printSeparator();
         Task2.checkSumSign();
         printSeparator();
+        Task3.printColor();
     }
 
     public static void printSeparator(){
