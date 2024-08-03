@@ -5,7 +5,7 @@ public class Task3 {
 
         if(value <= 0)
             color = "Красный";
-        else if(value >100)
+        else if(value > 100)
             color = "Зеленый";
         else
             color = "Желтый";
