@@ -18,11 +18,16 @@ public class Main {
         printSeparator();
         System.out.println(Task9.isYearLeap(1500));
         printSeparator();
-
+        printArray(Task10.reverseArrayNumbers(new int[]{0, 1, 1, 0, 1}));
 
     }
 
     public static void printSeparator(){
         System.out.println("---------------------");
+    }
+
+    public static void printArray(int[] arr){
+        for(int i = 0; i < arr.length; i++)
+            System.out.print(arr[i] + " ");
     }
 }
