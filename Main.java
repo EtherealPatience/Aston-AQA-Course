@@ -7,6 +7,8 @@ public class Main {
         Task3.printColor();
         printSeparator();
         Task4.compareNumbers();
+        printSeparator();
+        System.out.println(Task5.checkSumInRange(4,6));
     }
 
     public static void printSeparator(){
