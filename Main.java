@@ -9,6 +9,9 @@ public class Main {
         Task4.compareNumbers();
         printSeparator();
         System.out.println(Task5.checkSumInRange(4,6));
+        printSeparator();
+        Task6.isPositiveNumber(0);
+
     }
 
     public static void printSeparator(){
