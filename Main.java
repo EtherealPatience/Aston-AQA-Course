@@ -15,6 +15,10 @@ public class Main {
         System.out.println(Task7.isNumberPositive(0));
         printSeparator();
         Task8.printStringCyclically("Hello, world!", 4);
+        printSeparator();
+        System.out.println(Task9.isYearLeap(1500));
+        printSeparator();
+
 
     }
 
