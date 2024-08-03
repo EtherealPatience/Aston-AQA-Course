@@ -21,6 +21,9 @@ public class Main {
         printArray(Task10.reverseArrayNumbers(new int[]{0, 1, 1, 0, 1}));
         printSeparator();
         printArray(Task11.fillArray(new int[100]));
+        printSeparator();
+        printArray(Task12.changeArray(new int[]{1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1}));
+
     }
 
     public static void printSeparator(){
