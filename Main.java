@@ -21,7 +21,7 @@ public class Main {
         Task6.checkNumberPositivity(0);
 
         printSeparator();
-        System.out.println(Task7.isNumberPositive(0));
+        System.out.println(Task7.isNumberNegative(0));
 
         printSeparator();
         Task8.printStringCyclically("Hello, world!", 4);
