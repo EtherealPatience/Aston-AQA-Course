@@ -24,6 +24,10 @@ public class Park {
         }
     }
 
+    public void showParkInfo(){
+        System.out.println("Парк " + parkName + ", контактный телефон: " + phone + ", email " + email);
+    }
+
     public Park(String _parkName, String _email, String _phone){
         parkName = _parkName;
         email = _email;

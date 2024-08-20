@@ -4,8 +4,12 @@ public class Main {
         displayEmployeesArrayInfo(employeeArray);
         printSeparator();
 
-        Park park1 = new Park("Лучезарный", "parkluchik@gmail.com", "_3755647262");
+        Park park1 = new Park("Лучезарный", "parkluchik@gmail.com", "+3755647262");
         Park park2 = new Park("Солнечный", "sunnypark@gmail.com", "+3759876243");
+
+        park1.showParkInfo();
+        park2.showParkInfo();
+        printSeparator();
 
         Park.Attraction attraction1 = new Park.Attraction("Летающая тарелка", 12, 5, 10, 100, 200);
         Park.Attraction attraction2 = new Park.Attraction("Жемчужина", 8, 3, 8, 80, 200);
