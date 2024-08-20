@@ -1,7 +1,12 @@
 public class Main {
     public static void main(String[] args){
         Employee[] employeeArray = fillEmployeesArray();
-        displayEmployeesArrayInfo(employeeArray);
+        //displayEmployeesArrayInfo(employeeArray);
+
+        Park park = new Park();
+        Park.Attraction attraction1 = new Park.Attraction("Летающая тарелка", 12, 5, 10, 100, 200);
+        park.addAttraction(attraction1);
+        park.showAttractionsInfo();
     }
 
     public static Employee[] fillEmployeesArray(){
