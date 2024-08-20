@@ -26,6 +26,7 @@ public class Main {
         park2.showAttractionsInfo();
         printSeparator();
         park1.deleteAttraction(attraction2);
+        printSeparator();
         park1.showAttractionsInfo();
     }
 
@@ -48,6 +49,7 @@ public class Main {
     }
 
     public static void displayEmployeesArrayInfo(Employee[] employeeArray){
+        System.out.println("Список всех сотрудников: ");
         for(Employee emp : employeeArray){
             emp.showInfo();
             System.out.println();
