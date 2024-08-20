@@ -1,12 +1,32 @@
 public class Main {
     public static void main(String[] args){
         Employee[] employeeArray = fillEmployeesArray();
-        //displayEmployeesArrayInfo(employeeArray);
+        displayEmployeesArrayInfo(employeeArray);
+        printSeparator();
 
-        Park park = new Park();
+        Park park1 = new Park("Лучезарный", "parkluchik@gmail.com", "_3755647262");
+        Park park2 = new Park("Солнечный", "sunnypark@gmail.com", "+3759876243");
+
         Park.Attraction attraction1 = new Park.Attraction("Летающая тарелка", 12, 5, 10, 100, 200);
-        park.addAttraction(attraction1);
-        park.showAttractionsInfo();
+        Park.Attraction attraction2 = new Park.Attraction("Жемчужина", 8, 3, 8, 80, 200);
+        Park.Attraction attraction3 = new Park.Attraction("Юпитер", 10, 4, 2, 40, 140);
+        Park.Attraction attraction4 = new Park.Attraction("Парашют", 12, 8, 12, 140, 200);
+        Park.Attraction attraction5 = new Park.Attraction("Комната страха", 8, 10, 14, 120, 240);
+
+        park1.addAttraction(attraction1);
+        park1.addAttraction(attraction2);
+        park1.addAttraction(attraction3);
+        park2.addAttraction(attraction3);
+        park2.addAttraction(attraction4);
+        park2.addAttraction(attraction5);
+        printSeparator();
+
+        park1.showAttractionsInfo();
+        printSeparator();
+        park2.showAttractionsInfo();
+        printSeparator();
+        park1.deleteAttraction(attraction2);
+        park1.showAttractionsInfo();
     }
 
     public static Employee[] fillEmployeesArray(){
@@ -32,5 +52,9 @@ public class Main {
             emp.showInfo();
             System.out.println();
         }
+    }
+
+    public static void printSeparator(){
+        System.out.println("------------------------------------------");
     }
 }
