@@ -1,4 +1,5 @@
 public class Cat extends Animal{
+    public static int countCat;
     public String breed;
 
     @Override
@@ -23,5 +24,10 @@ public class Cat extends Animal{
         breed = _breed;
         runLimit = 200;
         swimLimit = 0;
+        countCat++;
+    }
+
+    public static void showCountCat(){
+        System.out.println("Общее количество котов: " + countCat);
     }
 }

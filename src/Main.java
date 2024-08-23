@@ -5,5 +5,7 @@ public class Main {
         cat1.run(300);
         cat1.run(200);
         cat1.run(100);
+        Animal.showCountAnimal();
+        Cat.showCountCat();
     }
 }
