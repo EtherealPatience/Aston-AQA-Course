@@ -56,6 +56,11 @@ public class Main {
 
         Circle circle = new Circle("Красный", "Чёрный", 2.5);
         circle.showInfo();
+
+        printSeparator();
+
+        Rectangle rect = new Rectangle("Фиолетовый", "Синий", 6.5, 4.5);
+        rect.showInfo();
     }
 
     public static void printSeparator(){

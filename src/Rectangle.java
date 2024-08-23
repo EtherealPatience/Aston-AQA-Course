@@ -1,31 +1,34 @@
-public class Circle implements Shape{
-    public double radius;
+public class Rectangle implements Shape{
     public String fillColor;
     public String borderColor;
+    public double length;
+    public double width;
 
     @Override
     public double calculatePerimetr() {
-        return 2 * p * radius;
+        return (length*2) + (width*2);
     }
 
     @Override
     public double calculateArea() {
-        return p * Math.pow(radius,2);
+        return length*width;
     }
 
     @Override
-    public void showInfo(){
-        System.out.printf("Фигура: круг" + "\n" +
+    public void showInfo() {
+        System.out.printf("Фигура: прямоугольник" + "\n" +
                 "Цвет заливки: " + fillColor + "\n" +
                 "Цвет границы: " + borderColor + "\n" +
-                "Радиус: " + radius + "\n" +
+                "Длина: " + length + "\n" +
+                "Ширина: " + width + "\n" +
                 "Периметр: %.2f" + "\n" +
                 "Площадь: %.2f\n", calculatePerimetr(), calculateArea());
     }
 
-    public Circle(String _fillColor, String _borderColor, double _radius){
-        radius = _radius;
+    public Rectangle(String _fillColor, String _borderColor, double _length, double _width){
         fillColor = _fillColor;
         borderColor = _borderColor;
+        length = _length;
+        width = _width;
     }
 }
