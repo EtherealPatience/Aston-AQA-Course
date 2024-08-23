@@ -1,6 +1,3 @@
-import java.sql.SQLOutput;
-import java.sql.Time;
-
 public class Main {
     public static void main(String[] args){
         Cat cat1 = new Cat("Чилик", 1, "Британская голубая");
