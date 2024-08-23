@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 public class Main {
     public static void main(String[] args){
         Cat cat1 = new Cat("Чилик", 1, "Британская голубая");
@@ -49,9 +51,22 @@ public class Main {
             cats[i].eat(bowl, 15);
             System.out.println(cats[i].getSatietyStatus());
         }
+
+        printTaskSeparator();
     }
 
     public static void printSeparator(){
         System.out.println("----------------------------------------");
+    }
+
+    public static void printTaskSeparator() {
+        String text = "Задание №2";
+        int margin = 2;
+        String horizontalBorder = "+" + "-".repeat(text.length()+margin) + "+";
+        String titleLine = String.format("| %s |", text);
+
+        System.out.println("\n" + horizontalBorder);
+        System.out.println(titleLine);
+        System.out.println(horizontalBorder);
     }
 }
