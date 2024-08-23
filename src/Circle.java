@@ -1,6 +1,7 @@
 public class Circle implements Shape{
     public double radius;
-    private double p = 3.14;
+    public String fillColor;
+    public String borderColor;
 
     @Override
     public double calculatePerimetr() {
@@ -10,5 +11,21 @@ public class Circle implements Shape{
     @Override
     public double calculateArea() {
         return p * Math.pow(radius,2);
+    }
+
+    @Override
+    public void showInfo(){
+        System.out.printf("Фигура: круг" + "\n" +
+                "Цвет заливки: " + fillColor + "\n" +
+                "Цвет границы: " + borderColor + "\n" +
+                "Радиус: " + radius + "\n" +
+                "Периметр %.2f" + "\n" +
+                "Площадь %.2f", calculatePerimetr(), calculateArea());
+    }
+
+    public Circle(String _fillColor, String _borderColor, double _radius){
+        radius = _radius;
+        fillColor = _fillColor;
+        borderColor = _borderColor;
     }
 }

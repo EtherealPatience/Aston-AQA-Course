@@ -53,6 +53,9 @@ public class Main {
         }
 
         printTaskSeparator();
+
+        Circle circle = new Circle("Красный", "Чёрный", 2.5);
+        circle.showInfo();
     }
 
     public static void printSeparator(){
