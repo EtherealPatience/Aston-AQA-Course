@@ -6,6 +6,11 @@ public class Main {
         cat1.run(200);
         cat1.swim(10);
 
+        System.out.println();
+
+        Cat cat2 = new Cat("Мявкич", 3, "Сфинкс");
+        cat2.showInfo();
+
         printSeparator();;
 
         Dog dog1 = new Dog("Круглик", 5, true);
@@ -20,6 +25,30 @@ public class Main {
         Animal.showCountAnimal();
         Cat.showCountCat();
         Dog.showCountDog();
+
+        printSeparator();
+
+        Bowl bowl = new Bowl(20);
+        bowl.showCountFood();
+        cat1.eat(bowl, 15);
+        cat1.eat(bowl, 20);
+        cat2.eat(bowl, 20);
+        bowl.showCountFood();
+
+        printSeparator();
+
+        Cat cat3 = new Cat("Мурзякус", 4, "Дворняжка");
+        Cat cat4 = new Cat("Луна", 2, "Вислоухая");
+
+        bowl.foodIncrease(35);
+        bowl.showCountFood();
+
+        Cat[] cats = {cat1, cat2, cat3, cat4};
+
+        for(int i = 0; i < cats.length; i++){
+            cats[i].eat(bowl, 15);
+            System.out.println(cats[i].getSatietyStatus());
+        }
     }
 
     public static void printSeparator(){
