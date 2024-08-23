@@ -28,6 +28,6 @@ public class Cat extends Animal{
     }
 
     public static void showCountCat(){
-        System.out.println("Общее количество котов: " + countCat);
+        System.out.println("Количество котов: " + countCat);
     }
 }
