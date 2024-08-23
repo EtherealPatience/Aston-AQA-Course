@@ -1,4 +1,5 @@
 import java.sql.SQLOutput;
+import java.sql.Time;
 
 public class Main {
     public static void main(String[] args){
@@ -61,6 +62,11 @@ public class Main {
 
         Rectangle rect = new Rectangle("Фиолетовый", "Синий", 6.5, 4.5);
         rect.showInfo();
+
+        printSeparator();
+
+        Triangle triangle = new Triangle("Зелёный", "Жёлтый", 4.0, 2.5, 3.5);
+        triangle.showInfo();
     }
 
     public static void printSeparator(){
