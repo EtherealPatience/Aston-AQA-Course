@@ -1,11 +1,10 @@
-public class Triangle implements Shape{
+public class Triangle implements IShape{
     public String fillColor;
     public String borderColor;
     public double sideA;
     public double sideB;
     public double sideC;
     public double halfPerimetr;
-
 
     @Override
     public double calculatePerimetr() {

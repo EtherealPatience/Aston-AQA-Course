@@ -1,4 +1,4 @@
-public class Rectangle implements Shape{
+public class Rectangle implements IShape{
     public String fillColor;
     public String borderColor;
     public double length;

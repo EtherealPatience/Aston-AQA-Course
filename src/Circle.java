@@ -1,4 +1,4 @@
-public class Circle implements Shape{
+public class Circle implements IShape{
     public double radius;
     public String fillColor;
     public String borderColor;

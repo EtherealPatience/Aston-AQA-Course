@@ -64,6 +64,16 @@ public class Main {
 
         Triangle triangle = new Triangle("Зелёный", "Жёлтый", 4.0, 2.5, 3.5);
         triangle.showInfo();
+
+        printSeparator();
+
+        //Task extension
+        System.out.printf("Периметр круга %.2f\n", circle.circleCalculatePerimetr(4.0));
+        System.out.printf("Площадь круга %.2f\n", circle.circleCalculateArea(4.0));
+        System.out.printf("Периметр прямоугольника %.2f\n", rect.rectangleCalculatePerimetr(4.0, 2.0));
+        System.out.printf("Площадь прямоугольника %.2f\n", rect.rectangleCalculateArea(4.0, 2.0));
+        System.out.printf("Периметр треугольника %.2f\n", triangle.triangleCalculatePerimetr(4.0, 2.0, 3.0));
+        System.out.printf("Площадь треугольника %.2f\n", triangle.triangleCalculateArea(4.0, 2.0, 3.0));
     }
 
     public static void printSeparator(){
