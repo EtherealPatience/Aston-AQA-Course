@@ -2,11 +2,20 @@ import com.sun.source.doctree.SummaryTree;
 
 public class Main {
     public static void main(String[] args){
+        String[][] array = new String[][]{
+                {"1", "1", "1", "1"},
+                {"1", "1", "1", "1"},
+                {"1", "1", "1", "1"},
+                {"1", "1", "1", "1"}
+        };
+
         try {
-            System.out.println(sumArrayElements(new String[][]{{"1", "2", "3", "10"}, {"4", "5", "6", "10"}, {"7", "8", "9", "10"}, {"10", "11", "12", "13"}}));
+            System.out.println("Сумма элементов массива " + sumArrayElements(array));
+            array[1][2] = "lol";
+            System.out.println(sumArrayElements(array));
         }
         catch (MyArraySizeException | MyArrayDataException e){
-            System.out.println(e.getMessage());
+            System.out.println("Исключение: " + e.getMessage());
         }
     }
 
