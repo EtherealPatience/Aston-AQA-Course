@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Park {
-    public ArrayList<Attraction> attractionList = new ArrayList<Attraction>();
-    public String parkName;
-    public String email;
-    public String phone;
+    private ArrayList<Attraction> attractionList = new ArrayList<Attraction>();
+    private String parkName;
+    private String email;
+    private String phone;
 
     public void addAttraction(Attraction attraction){
         attractionList.add(attraction);
@@ -28,27 +28,27 @@ public class Park {
         System.out.println("Парк " + parkName + ", контактный телефон: " + phone + ", email " + email);
     }
 
-    public Park(String _parkName, String _email, String _phone){
-        parkName = _parkName;
-        email = _email;
-        phone = _phone;
+    public Park(String parkName, String email, String phone){
+        this.parkName = parkName;
+        this.email = email;
+        this.phone = phone;
     }
 
     public static class Attraction {
-        public String name;
-        public int workingHours;
-        public int price;
-        public int ageRestriction;
-        public int minHeight;
-        public  int maxHeight;
+        private String name;
+        private int workingHours;
+        private int price;
+        private int ageRestriction;
+        private int minHeight;
+        private  int maxHeight;
 
-        public Attraction(String _name, int _workingHours, int _price, int _ageRestriction, int _minHeight, int _maxHeight){
-            name = _name;
-            workingHours = _workingHours;
-            price = _price;
-            ageRestriction = _ageRestriction;
-            minHeight = _minHeight;
-            maxHeight = _maxHeight;
+        public Attraction(String name, int workingHours, int price, int ageRestriction, int minHeight, int maxHeight){
+            this.name = name;
+            this.workingHours = workingHours;
+            this.price = price;
+            this.ageRestriction = ageRestriction;
+            this.minHeight = minHeight;
+            this.maxHeight = maxHeight;
         }
 
         public void showInfo(){
