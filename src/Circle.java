@@ -1,7 +1,7 @@
 public class Circle implements IShape{
-    public double radius;
-    public String fillColor;
-    public String borderColor;
+    private double radius;
+    private String fillColor;
+    private String borderColor;
 
     @Override
     public double calculatePerimetr() {
@@ -23,9 +23,9 @@ public class Circle implements IShape{
                 "Площадь: %.2f\n", calculatePerimetr(), calculateArea());
     }
 
-    public Circle(String _fillColor, String _borderColor, double _radius){
-        radius = _radius;
-        fillColor = _fillColor;
-        borderColor = _borderColor;
+    public Circle(String fillColor, String borderColor, double radius){
+        this.radius = radius;
+        this.fillColor = fillColor;
+        this.borderColor = borderColor;
     }
 }

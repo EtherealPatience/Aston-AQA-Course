@@ -1,8 +1,8 @@
 public class Rectangle implements IShape{
-    public String fillColor;
-    public String borderColor;
-    public double length;
-    public double width;
+    private String fillColor;
+    private String borderColor;
+    private double length;
+    private double width;
 
     @Override
     public double calculatePerimetr() {
@@ -25,10 +25,10 @@ public class Rectangle implements IShape{
                 "Площадь: %.2f\n", calculatePerimetr(), calculateArea());
     }
 
-    public Rectangle(String _fillColor, String _borderColor, double _length, double _width){
-        fillColor = _fillColor;
-        borderColor = _borderColor;
-        length = _length;
-        width = _width;
+    public Rectangle(String fillColor, String borderColor, double length, double width){
+        this.fillColor = fillColor;
+        this.borderColor = borderColor;
+        this.length = length;
+        this.width = width;
     }
 }

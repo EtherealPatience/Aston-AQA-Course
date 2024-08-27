@@ -1,8 +1,12 @@
 public class Bowl {
-    public int countFood;
+    private int countFood;
 
-    public Bowl(int _countFood){
-        countFood = _countFood;
+    public int getCountFood(){
+        return countFood;
+    }
+
+    public Bowl(int countFood){
+        this.countFood = countFood;
     }
 
     public void foodDecrease(int countReduction){

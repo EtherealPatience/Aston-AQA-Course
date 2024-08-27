@@ -1,6 +1,6 @@
 public class Dog extends Animal{
-    public static int countDog;
-    public boolean isGuardian;
+    private static int countDog;
+    private boolean isGuardian;
 
     @Override
     protected void run(int distance) {
@@ -25,15 +25,15 @@ public class Dog extends Animal{
         return isGuardian? "защитная порода" : "декоративная порода";
     }
 
-    protected Dog(String _name, int _age, boolean _isGuardian){
-        super(_name, _age);
+    protected Dog(String name, int age, boolean isGuardian){
+        super(name, age);
         runLimit = 500;
         swimLimit = 10;
-        isGuardian = _isGuardian;
+        this.isGuardian = isGuardian;
         countDog++;
     }
 
-    public static void showCountDog(){
+    protected static void showCountDog(){
         System.out.println("Количество собак: " + countDog);
     }
 }

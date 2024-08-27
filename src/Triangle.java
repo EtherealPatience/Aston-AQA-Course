@@ -1,10 +1,10 @@
 public class Triangle implements IShape{
-    public String fillColor;
-    public String borderColor;
-    public double sideA;
-    public double sideB;
-    public double sideC;
-    public double halfPerimetr;
+    private String fillColor;
+    private String borderColor;
+    private double sideA;
+    private double sideB;
+    private double sideC;
+    private double halfPerimetr;
 
     @Override
     public double calculatePerimetr() {
@@ -30,11 +30,11 @@ public class Triangle implements IShape{
 
     }
 
-    public Triangle(String _fillColor, String _borderColor, double _sideA, double _sideB, double _sideC){
-        fillColor = _fillColor;
-        borderColor = _borderColor;
-        sideA = _sideA;
-        sideB = _sideB;
-        sideC = _sideC;
+    public Triangle(String fillColor, String borderColor, double sideA, double sideB, double sideC){
+        this.fillColor = fillColor;
+        this.borderColor = borderColor;
+        this.sideA = sideA;
+        this.sideB = sideB;
+        this.sideC = sideC;
     }
 }

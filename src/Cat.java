@@ -1,7 +1,7 @@
 public class Cat extends Animal{
-    public static int countCat;
-    public String breed;
-    public boolean isSatiety;
+    private static int countCat;
+    private String breed;
+    private boolean isSatiety;
 
     @Override
     protected void run(int distance) {
@@ -17,22 +17,21 @@ public class Cat extends Animal{
 
     @Override
     protected void showInfo(){
-        System.out.println("Котик " + name + ", возраст - " +
-                age + ", порода - " +
-                breed + ", " +
-                getSatietyStatus());
+        System.out.println("Котик " + name +
+                ", возраст - " + age
+                + ", порода - " + breed +
+                ", " + getSatietyStatus());
     }
 
-    public String getSatietyStatus(){
+    protected String getSatietyStatus(){
         return isSatiety ? "сытый" : "голоден";
     }
 
-    public void eat(Bowl bowl, int eatenFood){
+    protected void eat(Bowl bowl, int eatenFood){
         if(isSatiety){
             System.out.println("Котик "+name+" не хочет кушать, он сытый");
-            return;
         }
-        else if(bowl.countFood > eatenFood){
+        else if(bowl.getCountFood() > eatenFood){
             bowl.foodDecrease(eatenFood);
             isSatiety = true;
             System.out.println("Котик " + name + " покушал " + eatenFood + " еды");
@@ -42,16 +41,16 @@ public class Cat extends Animal{
         }
     }
 
-    protected Cat(String _name, int _age, String _breed) {
-        super(_name, _age);
-        breed = _breed;
+    protected Cat(String name, int age, String breed) {
+        super(name, age);
+        this.breed = breed;
         runLimit = 200;
         swimLimit = 0;
         isSatiety = false;
         countCat++;
     }
 
-    public static void showCountCat(){
+    protected static void showCountCat(){
         System.out.println("Количество котов: " + countCat);
     }
 }
