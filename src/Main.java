@@ -1,5 +1,3 @@
-import com.sun.source.doctree.SummaryTree;
-
 public class Main {
     public static void main(String[] args){
         String[][] array = new String[][]{
