@@ -11,15 +11,30 @@ public class Main {
                 "Griffith", "Mikasa", "Frieren", "Lelouch"
         };
 
-        HashSet<String> setNames = new HashSet<>(Arrays.asList(arrayNames));
-        HashMap<String, Integer> mapNames = fillMap(new HashMap<>(), arrayNames);
+        HashSet<String> setUniqueNames = new HashSet<>(Arrays.asList(arrayNames));
+        HashMap<String, Integer> mapCountNames = fillMapCountNames(new HashMap<>(), arrayNames);
 
         System.out.println("All names - " + Arrays.toString(arrayNames));
-        System.out.println("Unique names - " + setNames);
-        System.out.println("Count names - " + mapNames);
+        System.out.println("Unique names - " + setUniqueNames);
+        System.out.println("Count names - " + mapCountNames);
+
+        printSeparator();
+
+        PhoneDirectory phoneDirectory = new PhoneDirectory();
+        phoneDirectory.add("Abduldjalilov", "+375447889924");
+        phoneDirectory.add("Zoldyck", "+375441234567");
+        phoneDirectory.add("Abduldjalilov", "+375440987654");
+        phoneDirectory.add("Ackerman", "+375447658421");
+        phoneDirectory.add("Abduldjalilov", "+375445452363");
+        phoneDirectory.add("Zoldyck", "+375298675462");
+
+        phoneDirectory.showAllContacts();
+        phoneDirectory.get("Abduldjalilov");
+        phoneDirectory.get("Zoldyck");
+        phoneDirectory.get("Ackerman");
     }
 
-    public static HashMap<String, Integer> fillMap(HashMap<String, Integer> map, String[] arr){
+    public static HashMap<String, Integer> fillMapCountNames(HashMap<String, Integer> map, String[] arr){
         for(int i = 0; i < arr.length; i++){
             if(map.containsKey(arr[i])){
                 map.put(arr[i], map.get(arr[i])+1);
@@ -29,5 +44,9 @@ public class Main {
             }
         }
         return map;
+    }
+
+    public static void printSeparator(){
+        System.out.println("----------------------------------------------------------");
     }
 }
