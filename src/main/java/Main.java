@@ -1,5 +1,10 @@
 public class Main {
     public static void main(String[] args){
-        System.out.println("Hello, world!");
+        try{
+            System.out.println(Factorial.getFactorial(-10));
+        }
+        catch (IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
