@@ -2,7 +2,6 @@ import jdk.jfr.Description;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.internal.collections.OneToTwoDimArrayIterator;
 
 public class TestFactorial {
 
@@ -24,9 +23,21 @@ public class TestFactorial {
             };
         }
 
+    @DataProvider(name="negativeNumbers")
+    public Object[] negativeNumbers(){
+        return new Object[] {-1, -2, -3, -2_147_483_648};
+    }
+
     @Test(dataProvider = "positiveNumbers")
+    @Description("Тест положительных чисел")
     public void testFactorialPositiveNumbers(int input, int expected){
         Assert.assertEquals(Factorial.getFactorial(input), expected);
+    }
+
+    @Test(dataProvider = "negativeNumbers", expectedExceptions = IllegalArgumentException.class)
+    @Description("Тест отрицательных чисел")
+    public void testFactorialNegativeNumbers(int input){
+        Factorial.getFactorial(input);
     }
 
 }
