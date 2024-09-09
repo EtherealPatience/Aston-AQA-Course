@@ -8,6 +8,7 @@ public class TestFactorial {
     @DataProvider(name = "positiveNumbers")
         public Object[][] positiveNumbers(){
             return new Object[][]{
+                    {0, 1},
                     {1, 1},
                     {2, 2},
                     {3, 6},
@@ -39,5 +40,4 @@ public class TestFactorial {
     public void testFactorialNegativeNumbers(int input){
         Factorial.getFactorial(input);
     }
-
 }
