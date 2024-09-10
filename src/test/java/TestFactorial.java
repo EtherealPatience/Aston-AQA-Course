@@ -1,9 +1,11 @@
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.testng.Assert;
 
 public class TestFactorial {
+
     @ParameterizedTest(name = "Факториал {0} равен {1}")
     @DisplayName("Тест положительных чисел для факториала")
     @CsvSource(value = {
@@ -23,5 +25,14 @@ public class TestFactorial {
     })
     public void testFactorialPositiveNumbers(int input, int expected){
         Assert.assertEquals(Factorial.getFactorial(input), expected);
+    }
+
+    @ParameterizedTest(name = "Факториала для числа {0} не существует")
+    @DisplayName("Тест отрицательных чисел для факториала")
+    @ValueSource(ints = {-1, -2, -3, -2_147_483_648})
+    public void testFactorialNegativeNumbers(int input){
+        Assert.assertThrows(IllegalArgumentException.class, () -> {
+            Factorial.getFactorial(input);
+        });
     }
 }
