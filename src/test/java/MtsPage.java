@@ -1,8 +1,9 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.security.PrivilegedAction;
+import java.util.List;
 
 public class MtsPage {
     protected static WebDriver driver;
@@ -28,10 +29,14 @@ public class MtsPage {
         return blockName.getText();
     }
 
-    public MtsPage acceptCookie(){
+    public void acceptCookie(){
         if(buttonCookieAgree.isDisplayed()){
             buttonCookieAgree.click();
         }
-        return this;
+    }
+
+    public List<WebElement> getLogoList(){
+        List<WebElement> logoList = driver.findElements(By.cssSelector(" .pay__partners ul li img"));
+        return  logoList;
     }
 }
