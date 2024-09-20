@@ -7,7 +7,7 @@ public class MtsPageTest extends SeleniumInitializer{
     @Test
     @DisplayName("Проверка названия блока")
     public void checkBlockName(){
-        mtsPage.openBaseURL();
+        mtsPage.openBaseURL().acceptCookie();
         Assertions.assertEquals("Онлайн пополнение\nбез комиссии", mtsPage.getBlockName());
     }
 }

@@ -9,6 +9,9 @@ public class MtsPage {
 
     private final String baseURL = "https://www.mts.by/";
 
+    @FindBy(id = "cookie-agree")
+    private WebElement buttonCookieAgree;
+
     @FindBy(xpath = "//*[@id='pay-section']//h2")
     private WebElement blockName;
 
@@ -23,5 +26,12 @@ public class MtsPage {
 
     public String getBlockName(){
         return blockName.getText();
+    }
+
+    public MtsPage acceptCookie(){
+        if(buttonCookieAgree.isDisplayed()){
+            buttonCookieAgree.click();
+        }
+        return this;
     }
 }
