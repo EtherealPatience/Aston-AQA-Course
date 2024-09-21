@@ -8,7 +8,6 @@ import java.util.List;
 
 public class MtsPageTest extends SeleniumInitializer{
 
-    @Disabled
     @Test
     @DisplayName("Проверка названия блока")
     public void checkNameBlock(){
@@ -16,7 +15,6 @@ public class MtsPageTest extends SeleniumInitializer{
         Assertions.assertEquals("Онлайн пополнение\nбез комиссии", mtsPage.getBlockName());
     }
 
-    @Disabled
     @Test
     @DisplayName("Проверка наличия логотипов платежных систем")
     public void checkLogoDisplay(){
@@ -30,10 +28,24 @@ public class MtsPageTest extends SeleniumInitializer{
     @Test
     @DisplayName("Проверка работы ссылки")
     public void checkLinkWork(){
+        String expectedTitle = "Порядок оплаты и безопасность интернет платежей";
         mtsPage.openBaseURL().acceptCookie();
         Assertions.assertNotNull(mtsPage.getServiceLink());
         Assertions.assertEquals(true, mtsPage.getServiceLink().isDisplayed());
         mtsPage.clickServiceLink();
-        Assertions.assertEquals("Порядок оплаты и безопасность интернет платежей", driver.getTitle());
+        Assertions.assertEquals(expectedTitle, driver.getTitle());
+    }
+
+    @Test
+    @DisplayName("Проверка работоспособности кнопки")
+    public void checkButtonWork(){
+        String phone = "297777777";
+        String sum = "100";
+        String email = "testing@mail.com";
+        String expectedText = "или используйте карту";
+
+        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        Assertions.assertEquals(expectedText, mtsPage.getActualTextElementForCheck());
+        driver.switchTo().defaultContent();
     }
 }

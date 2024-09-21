@@ -2,7 +2,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class MtsPage {
@@ -18,6 +21,21 @@ public class MtsPage {
 
     @FindBy(linkText = "Подробнее о сервисе")
     private WebElement serviceLink;
+
+    @FindBy(id = "connection-phone")
+    private WebElement phoneField;
+
+    @FindBy(id = "connection-sum")
+    private WebElement sumField;
+
+    @FindBy(id = "connection-email")
+    private WebElement emailField;
+
+    @FindBy(css = "#pay-connection > button")
+    private WebElement buttonContinueRefill;
+
+    @FindBy(css = ".bepaid-iframe")
+    private WebElement iframe;
 
     public static void setDriver(WebDriver webDriver){
         driver = webDriver;
@@ -51,5 +69,22 @@ public class MtsPage {
     public MtsPage clickServiceLink(){
         serviceLink.click();
         return this;
+    }
+
+    public MtsPage setValues(String phone, String sum, String email){
+        phoneField.sendKeys(phone);
+        sumField.sendKeys(sum);
+        emailField.sendKeys(email);
+        buttonContinueRefill.click();
+        return this;
+    }
+
+    public String getActualTextElementForCheck(){
+        driver.switchTo().frame(iframe);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement elementForCheck = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//span[contains(text(), 'или используйте карту')]")));
+
+        return elementForCheck.getText();
     }
 }
