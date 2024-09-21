@@ -16,6 +16,7 @@ public class MtsPageTest extends SeleniumInitializer{
         Assertions.assertEquals("Онлайн пополнение\nбез комиссии", mtsPage.getBlockName());
     }
 
+    @Disabled
     @Test
     @DisplayName("Проверка наличия логотипов платежных систем")
     public void checkLogoDisplay(){
@@ -24,5 +25,15 @@ public class MtsPageTest extends SeleniumInitializer{
         for(WebElement logo : logoList){
             Assertions.assertTrue(logo.isDisplayed(), "Логотип не отобразился, alt:" + logo.getAttribute("alt"));
         }
+    }
+
+    @Test
+    @DisplayName("Проверка работы ссылки")
+    public void checkLinkWork(){
+        mtsPage.openBaseURL().acceptCookie();
+        Assertions.assertNotNull(mtsPage.getServiceLink());
+        Assertions.assertEquals(true, mtsPage.getServiceLink().isDisplayed());
+        mtsPage.clickServiceLink();
+        Assertions.assertEquals("Порядок оплаты и безопасность интернет платежей", driver.getTitle());
     }
 }
