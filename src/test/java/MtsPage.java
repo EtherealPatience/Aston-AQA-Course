@@ -37,6 +37,9 @@ public class MtsPage {
     @FindBy(css = ".bepaid-iframe")
     private WebElement iframe;
 
+    @FindBy(xpath = "//section//div[2]/button")
+    private WebElement optionList;
+
     public static void setDriver(WebDriver webDriver){
         driver = webDriver;
     }
@@ -86,5 +89,23 @@ public class MtsPage {
                 By.xpath("//span[contains(text(), 'или используйте карту')]")));
 
         return elementForCheck.getText();
+    }
+
+    public MtsPage selectOption(String optionText){
+        optionList.click();
+        WebElement selectedOption = driver.findElement(
+                By.xpath("//option[@value='" + optionText + "']"));
+        selectedOption.click();
+
+        return this;
+    }
+
+    public List<WebElement> getFields(String optionText){
+        String formID = driver.findElement(By.xpath(
+                "//option[@value='"+ optionText +"']")).getAttribute("data-open");
+
+        List<WebElement> fields = driver.findElements(By.cssSelector("#" + formID + " input[type='text'"));
+
+        return fields;
     }
 }

@@ -3,6 +3,8 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -52,4 +54,26 @@ public class MtsPageTest extends SeleniumInitializer{
         Assertions.assertEquals(expectedText, mtsPage.getActualTextElementForCheck());
         driver.switchTo().defaultContent();
     }
+
+    @ParameterizedTest(name = "У элемента списка {0} присутствуют плейсхолдеры {1}, {2}, {3}")
+    @DisplayName("Проверка плейсхолдеров")
+    @CsvSource({
+            "Услуги связи, Номер телефона, Сумма, E-mail для отправки чека",
+            "Домашний интернет, Номер абонента, Сумма, E-mail для отправки чека",
+            "Рассрочка, Номер счета на 44, Сумма, E-mail для отправки чека",
+            "Задолженность, Номер счета на 2073, Сумма, E-mail для отправки чека"
+    })
+    public void checkPlaceholders(String optionText, String numberText, String sumText, String emailText){
+        int numberIndex = 0;
+        int sumIndex = 1;
+        int emailIndex = 2;
+        mtsPage.openBaseURL().acceptCookie().selectOption(optionText);
+        List<WebElement> fields = mtsPage.getFields(optionText);
+
+        Assertions.assertEquals(fields.get(numberIndex).getAttribute("placeholder"), numberText);
+        Assertions.assertEquals(fields.get(sumIndex).getAttribute("placeholder"), sumText);
+        Assertions.assertEquals(fields.get(emailIndex).getAttribute("placeholder"), emailText);
+    }
+
+
 }
