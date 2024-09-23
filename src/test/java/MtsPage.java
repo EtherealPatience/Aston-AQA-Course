@@ -108,4 +108,18 @@ public class MtsPage {
 
         return fields;
     }
+
+    public String getActualSumText(){
+        driver.switchTo().frame(iframe);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement elementForCheck = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//span[contains(text(), 'BYN')]")));
+
+        return elementForCheck.getText();
+    }
+
+    public MtsPage switchToDefaultContent(){
+        driver.switchTo().defaultContent();
+        return this;
+    }
 }

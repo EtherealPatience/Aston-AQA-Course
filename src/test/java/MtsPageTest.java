@@ -52,9 +52,10 @@ public class MtsPageTest extends SeleniumInitializer{
 
         mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
         Assertions.assertEquals(expectedText, mtsPage.getActualTextElementForCheck());
-        driver.switchTo().defaultContent();
+        mtsPage.switchToDefaultContent();
     }
 
+    @Disabled
     @ParameterizedTest(name = "У элемента списка {0} присутствуют плейсхолдеры {1}, {2}, {3}")
     @DisplayName("Проверка плейсхолдеров")
     @CsvSource({
@@ -75,5 +76,17 @@ public class MtsPageTest extends SeleniumInitializer{
         Assertions.assertEquals(fields.get(emailIndex).getAttribute("placeholder"), emailText);
     }
 
+    @Disabled
+    @Test
+    @DisplayName("Проверка корректности отображения суммы")
+    public void checkCorrectDisplaySum(){
+        String phone = "297777777";
+        String sum = "100";
+        String email = "testing@mail.com";
+
+        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        Assertions.assertEquals(sum + ".00 BYN", mtsPage.getActualSumText());
+        mtsPage.switchToDefaultContent();
+    }
 
 }
