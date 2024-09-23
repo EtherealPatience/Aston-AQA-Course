@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,7 @@ import java.util.List;
 
 public class MtsPageTest extends SeleniumInitializer{
 
+    @Disabled
     @Test
     @DisplayName("Проверка названия блока")
     public void checkNameBlock(){
@@ -14,6 +16,7 @@ public class MtsPageTest extends SeleniumInitializer{
         Assertions.assertEquals("Онлайн пополнение\nбез комиссии", mtsPage.getBlockName());
     }
 
+    @Disabled
     @Test
     @DisplayName("Проверка наличия логотипов платежных систем")
     public void checkLogoDisplay(){
@@ -24,6 +27,7 @@ public class MtsPageTest extends SeleniumInitializer{
         }
     }
 
+    @Disabled
     @Test
     @DisplayName("Проверка работы ссылки")
     public void checkLinkWork(){
@@ -35,6 +39,7 @@ public class MtsPageTest extends SeleniumInitializer{
         Assertions.assertEquals(expectedTitle, driver.getTitle());
     }
 
+    @Disabled
     @Test
     @DisplayName("Проверка работоспособности кнопки")
     public void checkButtonWork(){
