@@ -131,4 +131,13 @@ public class MtsPage {
 
         return elementForCheck.getText();
     }
+
+    public String getActualPhoneText(){
+        driver.switchTo().frame(iframe);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement elementForCheck = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//span[contains(text(), 'Номер')]")));
+
+        return elementForCheck.getText();
+    }
 }

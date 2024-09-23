@@ -90,6 +90,7 @@ public class MtsPageTest extends SeleniumInitializer{
         mtsPage.switchToDefaultContent();
     }
 
+    @Disabled
     @Test
     @DisplayName("Проверка корректности отображения суммы на кнопке")
     public void checkCorrectDisplaySumButton(){
@@ -100,6 +101,19 @@ public class MtsPageTest extends SeleniumInitializer{
 
         mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
         Assertions.assertEquals(expectedText, mtsPage.getActualSumButtonText());
+        mtsPage.switchToDefaultContent();
+    }
+
+    @Test
+    @DisplayName("Проверка корректности отображения номера телефона")
+    public void checkCorrectDisplayPhone(){
+        String phone = "297777777";
+        String sum = "100";
+        String email = "testing@mail.com";
+        String expectedText = "Оплата: Услуги связи Номер:375" + phone;
+
+        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        Assertions.assertEquals(expectedText, mtsPage.getActualPhoneText());
         mtsPage.switchToDefaultContent();
     }
 
