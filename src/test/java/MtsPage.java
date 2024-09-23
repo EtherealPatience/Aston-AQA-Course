@@ -122,4 +122,13 @@ public class MtsPage {
         driver.switchTo().defaultContent();
         return this;
     }
+
+    public String getActualSumButtonText(){
+        driver.switchTo().frame(iframe);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement elementForCheck = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//button[contains(@class, 'disabled')]")));
+
+        return elementForCheck.getText();
+    }
 }

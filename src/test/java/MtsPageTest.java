@@ -83,9 +83,23 @@ public class MtsPageTest extends SeleniumInitializer{
         String phone = "297777777";
         String sum = "100";
         String email = "testing@mail.com";
+        String expectedText = sum + ".00 BYN";
 
         mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
-        Assertions.assertEquals(sum + ".00 BYN", mtsPage.getActualSumText());
+        Assertions.assertEquals(expectedText, mtsPage.getActualSumText());
+        mtsPage.switchToDefaultContent();
+    }
+
+    @Test
+    @DisplayName("Проверка корректности отображения суммы на кнопке")
+    public void checkCorrectDisplaySumButton(){
+        String phone = "297777777";
+        String sum = "100";
+        String email = "testing@mail.com";
+        String expectedText = "Оплатить " + sum + ".00 BYN";
+
+        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        Assertions.assertEquals(expectedText, mtsPage.getActualSumButtonText());
         mtsPage.switchToDefaultContent();
     }
 
