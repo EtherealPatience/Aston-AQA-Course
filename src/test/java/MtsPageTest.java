@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebElement;
@@ -14,7 +13,6 @@ public class MtsPageTest extends SeleniumInitializer{
     String sum = "100";
     String email = "testing@mail.com";
 
-    @Disabled
     @Test
     @DisplayName("Проверка названия блока")
     public void checkNameBlock(){
@@ -22,7 +20,6 @@ public class MtsPageTest extends SeleniumInitializer{
         Assertions.assertEquals("Онлайн пополнение\nбез комиссии", mtsPage.getBlockName());
     }
 
-    @Disabled
     @Test
     @DisplayName("Проверка наличия логотипов платежных систем")
     public void checkLogoDisplay(){
@@ -33,7 +30,6 @@ public class MtsPageTest extends SeleniumInitializer{
         }
     }
 
-    @Disabled
     @Test
     @DisplayName("Проверка работы ссылки")
     public void checkLinkWork(){
@@ -45,7 +41,6 @@ public class MtsPageTest extends SeleniumInitializer{
         Assertions.assertEquals(expectedTitle, driver.getTitle());
     }
 
-    @Disabled
     @Test
     @DisplayName("Проверка работоспособности кнопки")
     public void checkButtonWork(){
@@ -56,7 +51,6 @@ public class MtsPageTest extends SeleniumInitializer{
         mtsPage.switchToDefaultContent();
     }
 
-    @Disabled
     @ParameterizedTest(name = "У элемента списка {0} присутствуют плейсхолдеры {1}, {2}, {3}")
     @DisplayName("Проверка плейсхолдеров")
     @CsvSource({
@@ -77,7 +71,6 @@ public class MtsPageTest extends SeleniumInitializer{
         Assertions.assertEquals(fields.get(emailIndex).getAttribute("placeholder"), emailText);
     }
 
-    @Disabled
     @Test
     @DisplayName("Проверка корректности отображения суммы")
     public void checkCorrectDisplaySum(){
@@ -88,7 +81,6 @@ public class MtsPageTest extends SeleniumInitializer{
         mtsPage.switchToDefaultContent();
     }
 
-    @Disabled
     @Test
     @DisplayName("Проверка корректности отображения суммы на кнопке")
     public void checkCorrectDisplaySumButton(){
@@ -99,7 +91,6 @@ public class MtsPageTest extends SeleniumInitializer{
         mtsPage.switchToDefaultContent();
     }
 
-    @Disabled
     @Test
     @DisplayName("Проверка корректности отображения номера телефона")
     public void checkCorrectDisplayPhone(){
@@ -110,7 +101,6 @@ public class MtsPageTest extends SeleniumInitializer{
         mtsPage.switchToDefaultContent();
     }
 
-    @Disabled
     @ParameterizedTest(name = "Надпись в незаполненном поле {0} корректно отображается")
     @DisplayName("Проверка корректности надписей в незаполненных полях в iframe")
     @CsvSource({

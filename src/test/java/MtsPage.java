@@ -10,6 +10,7 @@ import java.util.List;
 
 public class MtsPage {
     protected static WebDriver driver;
+    private static WebDriverWait wait;
 
     private final String baseURL = "https://www.mts.by/";
 
@@ -42,6 +43,7 @@ public class MtsPage {
 
     public static void setDriver(WebDriver webDriver){
         driver = webDriver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     }
 
     public MtsPage openBaseURL(){
@@ -84,7 +86,6 @@ public class MtsPage {
 
     public String getActualTextElementForCheck(){
         driver.switchTo().frame(iframe);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement elementForCheck = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//span[contains(text(), 'или используйте карту')]")));
 
@@ -111,7 +112,6 @@ public class MtsPage {
 
     public String getActualSumText(){
         driver.switchTo().frame(iframe);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement elementForCheck = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//span[contains(text(), 'BYN')]")));
 
@@ -125,7 +125,6 @@ public class MtsPage {
 
     public String getActualSumButtonText(){
         driver.switchTo().frame(iframe);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement elementForCheck = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//button[contains(@class, 'disabled')]")));
 
@@ -134,7 +133,6 @@ public class MtsPage {
 
     public String getActualPhoneText(){
         driver.switchTo().frame(iframe);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement elementForCheck = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//span[contains(text(), 'Номер')]")));
 
@@ -143,7 +141,6 @@ public class MtsPage {
 
     public WebElement getIframeField(String innerText){
         driver.switchTo().frame(iframe);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement elementForCheck = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.xpath("//label[contains(text(), '"+innerText+"')]")));
 
@@ -153,7 +150,6 @@ public class MtsPage {
     public Boolean isIconsVisible(){
         Boolean isAllIconsVisible = false;
         driver.switchTo().frame(iframe);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         WebElement cardsBrandContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.className("cards-brands__container")));
 
