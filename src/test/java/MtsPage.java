@@ -140,4 +140,13 @@ public class MtsPage {
 
         return elementForCheck.getText();
     }
+
+    public WebElement getIframeField(String innerText){
+        driver.switchTo().frame(iframe);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement elementForCheck = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//label[contains(text(), '"+innerText+"')]")));
+
+        return elementForCheck;
+    }
 }

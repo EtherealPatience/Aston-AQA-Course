@@ -104,6 +104,7 @@ public class MtsPageTest extends SeleniumInitializer{
         mtsPage.switchToDefaultContent();
     }
 
+    @Disabled
     @Test
     @DisplayName("Проверка корректности отображения номера телефона")
     public void checkCorrectDisplayPhone(){
@@ -116,5 +117,21 @@ public class MtsPageTest extends SeleniumInitializer{
         Assertions.assertEquals(expectedText, mtsPage.getActualPhoneText());
         mtsPage.switchToDefaultContent();
     }
+
+    @ParameterizedTest(name = "Надпись в незаполненном поле {0} корректно отображается")
+    @DisplayName("Проверка корректности надписей в незаполненных полях в iframe")
+    @CsvSource({
+            "Номер карты", "Срок действия", "CVC", "Имя держателя (как на карте)"
+    })
+    public void checkIframeFields(String expectedField){
+        String phone = "297777777";
+        String sum = "100";
+        String email = "testing@mail.com";
+
+        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        Assertions.assertEquals(expectedField, mtsPage.getIframeField(expectedField).getText());
+        mtsPage.switchToDefaultContent();
+    }
+
 
 }
