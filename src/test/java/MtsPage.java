@@ -149,4 +149,22 @@ public class MtsPage {
 
         return elementForCheck;
     }
+
+    public Boolean isIconsVisible(){
+        Boolean isAllIconsVisible = false;
+        driver.switchTo().frame(iframe);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement cardsBrandContainer = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.className("cards-brands__container")));
+
+        List<WebElement> iconsPaymentList = cardsBrandContainer.findElements(By.tagName("img"));
+
+        for(WebElement icon : iconsPaymentList){
+            wait.until(ExpectedConditions.visibilityOf(icon));
+            if(!icon.isDisplayed())
+                return false;
+        }
+
+        return true;
+    }
 }

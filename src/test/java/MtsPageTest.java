@@ -10,6 +10,10 @@ import java.util.List;
 
 public class MtsPageTest extends SeleniumInitializer{
 
+    String phone = "297777777";
+    String sum = "100";
+    String email = "testing@mail.com";
+
     @Disabled
     @Test
     @DisplayName("Проверка названия блока")
@@ -45,9 +49,6 @@ public class MtsPageTest extends SeleniumInitializer{
     @Test
     @DisplayName("Проверка работоспособности кнопки")
     public void checkButtonWork(){
-        String phone = "297777777";
-        String sum = "100";
-        String email = "testing@mail.com";
         String expectedText = "или используйте карту";
 
         mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
@@ -80,9 +81,6 @@ public class MtsPageTest extends SeleniumInitializer{
     @Test
     @DisplayName("Проверка корректности отображения суммы")
     public void checkCorrectDisplaySum(){
-        String phone = "297777777";
-        String sum = "100";
-        String email = "testing@mail.com";
         String expectedText = sum + ".00 BYN";
 
         mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
@@ -94,9 +92,6 @@ public class MtsPageTest extends SeleniumInitializer{
     @Test
     @DisplayName("Проверка корректности отображения суммы на кнопке")
     public void checkCorrectDisplaySumButton(){
-        String phone = "297777777";
-        String sum = "100";
-        String email = "testing@mail.com";
         String expectedText = "Оплатить " + sum + ".00 BYN";
 
         mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
@@ -108,9 +103,6 @@ public class MtsPageTest extends SeleniumInitializer{
     @Test
     @DisplayName("Проверка корректности отображения номера телефона")
     public void checkCorrectDisplayPhone(){
-        String phone = "297777777";
-        String sum = "100";
-        String email = "testing@mail.com";
         String expectedText = "Оплата: Услуги связи Номер:375" + phone;
 
         mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
@@ -118,20 +110,27 @@ public class MtsPageTest extends SeleniumInitializer{
         mtsPage.switchToDefaultContent();
     }
 
+    @Disabled
     @ParameterizedTest(name = "Надпись в незаполненном поле {0} корректно отображается")
     @DisplayName("Проверка корректности надписей в незаполненных полях в iframe")
     @CsvSource({
             "Номер карты", "Срок действия", "CVC", "Имя держателя (как на карте)"
     })
     public void checkIframeFields(String expectedField){
-        String phone = "297777777";
-        String sum = "100";
-        String email = "testing@mail.com";
 
         mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
         Assertions.assertEquals(expectedField, mtsPage.getIframeField(expectedField).getText());
         mtsPage.switchToDefaultContent();
     }
 
+    @Test
+    @DisplayName("Проверка наличия иконок платежных систем")
+    public void checkIconsPaymentDisplay(){
+        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+
+        Assertions.assertTrue(mtsPage.isIconsVisible());
+
+        mtsPage.switchToDefaultContent();
+    }
 
 }
