@@ -20,6 +20,7 @@ public class SeleniumInitializer {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         MtsPage.setDriver(driver);
         mtsPage = PageFactory.initElements(driver, MtsPage.class);
+        mtsPage.openBaseURL().acceptCookie();
     }
 
     @AfterEach
