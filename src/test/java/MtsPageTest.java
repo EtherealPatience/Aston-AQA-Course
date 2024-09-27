@@ -16,14 +16,12 @@ public class MtsPageTest extends SeleniumInitializer{
     @Test
     @DisplayName("Проверка названия блока")
     public void checkNameBlock(){
-        mtsPage.openBaseURL().acceptCookie();
         Assertions.assertEquals("Онлайн пополнение\nбез комиссии", mtsPage.getBlockName());
     }
 
     @Test
     @DisplayName("Проверка наличия логотипов платежных систем")
     public void checkLogoDisplay(){
-        mtsPage.openBaseURL().acceptCookie();
         List<WebElement> logoList = mtsPage.getLogoList();
         for(WebElement logo : logoList){
             Assertions.assertTrue(logo.isDisplayed(), "Логотип не отобразился, alt:" + logo.getAttribute("alt"));
@@ -34,7 +32,6 @@ public class MtsPageTest extends SeleniumInitializer{
     @DisplayName("Проверка работы ссылки")
     public void checkLinkWork(){
         String expectedTitle = "Порядок оплаты и безопасность интернет платежей";
-        mtsPage.openBaseURL().acceptCookie();
         Assertions.assertNotNull(mtsPage.getServiceLink());
         Assertions.assertEquals(true, mtsPage.getServiceLink().isDisplayed());
         mtsPage.clickServiceLink();
@@ -46,7 +43,7 @@ public class MtsPageTest extends SeleniumInitializer{
     public void checkButtonWork(){
         String expectedText = "или используйте карту";
 
-        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        mtsPage.setValues(phone, sum, email);
         Assertions.assertEquals(expectedText, mtsPage.getActualTextElementForCheck());
         mtsPage.switchToDefaultContent();
     }
@@ -63,7 +60,7 @@ public class MtsPageTest extends SeleniumInitializer{
         int numberIndex = 0;
         int sumIndex = 1;
         int emailIndex = 2;
-        mtsPage.openBaseURL().acceptCookie().selectOption(optionText);
+        mtsPage.selectOption(optionText);
         List<WebElement> fields = mtsPage.getFields(optionText);
 
         Assertions.assertEquals(fields.get(numberIndex).getAttribute("placeholder"), numberText);
@@ -76,7 +73,7 @@ public class MtsPageTest extends SeleniumInitializer{
     public void checkCorrectDisplaySum(){
         String expectedText = sum + ".00 BYN";
 
-        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        mtsPage.setValues(phone, sum, email);
         Assertions.assertEquals(expectedText, mtsPage.getActualSumText());
         mtsPage.switchToDefaultContent();
     }
@@ -86,7 +83,7 @@ public class MtsPageTest extends SeleniumInitializer{
     public void checkCorrectDisplaySumButton(){
         String expectedText = "Оплатить " + sum + ".00 BYN";
 
-        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        mtsPage.setValues(phone, sum, email);
         Assertions.assertEquals(expectedText, mtsPage.getActualSumButtonText());
         mtsPage.switchToDefaultContent();
     }
@@ -96,7 +93,7 @@ public class MtsPageTest extends SeleniumInitializer{
     public void checkCorrectDisplayPhone(){
         String expectedText = "Оплата: Услуги связи Номер:375" + phone;
 
-        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        mtsPage.setValues(phone, sum, email);
         Assertions.assertEquals(expectedText, mtsPage.getActualPhoneText());
         mtsPage.switchToDefaultContent();
     }
@@ -108,7 +105,7 @@ public class MtsPageTest extends SeleniumInitializer{
     })
     public void checkIframeFields(String expectedField){
 
-        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        mtsPage.setValues(phone, sum, email);
         Assertions.assertEquals(expectedField, mtsPage.getIframeField(expectedField).getText());
         mtsPage.switchToDefaultContent();
     }
@@ -116,7 +113,7 @@ public class MtsPageTest extends SeleniumInitializer{
     @Test
     @DisplayName("Проверка наличия иконок платежных систем")
     public void checkIconsPaymentDisplay(){
-        mtsPage.openBaseURL().acceptCookie().setValues(phone, sum, email);
+        mtsPage.setValues(phone, sum, email);
 
         Assertions.assertTrue(mtsPage.isIconsVisible());
 
