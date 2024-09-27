@@ -1,5 +1,6 @@
 package Methods;
 
+import ExpectedData.GetExpectedData;
 import POJO.GetData;
 import Specs.GetSpecs;
 import org.junit.jupiter.api.Assertions;
@@ -8,16 +9,6 @@ import org.junit.jupiter.api.Test;
 public class GetMethod {
     @Test
     public void testGetMethod(){
-        String hostExpected = "postman-echo.com";
-        String connectionExpected = "close";
-        String xForwardedProtoExpected = "https";
-        String xForwardedPortExpected = "443";
-        String contentTypeExpected = "application/json";
-        String acceptExpected = "*/*";
-        String userAgentExpected = "Apache-HttpClient/4.5.13 (Java/11.0.24)";
-        String acceptEncodingExpected = "gzip,deflate";
-        String urlExpected = "https://postman-echo.com/get/";
-
         GetData data = GetSpecs.request.
                 when().
                     get("get/").
@@ -26,17 +17,16 @@ public class GetMethod {
                     log().body().
                     extract().as(GetData.class);
 
-        Assertions.assertEquals(hostExpected, data.getHeaders().getHost());
+        Assertions.assertEquals(GetExpectedData.getHost(), data.getHeaders().getHost());
         Assertions.assertNotNull(data.getHeaders().getxRequestStart());
-        Assertions.assertEquals(connectionExpected, data.getHeaders().getConnection());
-        Assertions.assertEquals(xForwardedProtoExpected, data.getHeaders().getxForwardedProto());
-        Assertions.assertEquals(xForwardedPortExpected, data.getHeaders().getxForwardedPort());
+        Assertions.assertEquals(GetExpectedData.getConnection(), data.getHeaders().getConnection());
+        Assertions.assertEquals(GetExpectedData.getxForwardedProto(), data.getHeaders().getxForwardedProto());
+        Assertions.assertEquals(GetExpectedData.getxForwardedPort(), data.getHeaders().getxForwardedPort());
         Assertions.assertNotNull(data.getHeaders().getxAmznTraceId());
-        Assertions.assertEquals(contentTypeExpected, data.getHeaders().getContentType());
-        Assertions.assertEquals(acceptExpected, data.getHeaders().getAccept());
-        Assertions.assertEquals(userAgentExpected, data.getHeaders().getUserAgent());
-        Assertions.assertEquals(acceptEncodingExpected, data.getHeaders().getAcceptEncoding());
-        Assertions.assertEquals(urlExpected, data.getURL());
-
+        Assertions.assertEquals(GetExpectedData.getContentType(), data.getHeaders().getContentType());
+        Assertions.assertEquals(GetExpectedData.getAccept(), data.getHeaders().getAccept());
+        Assertions.assertEquals(GetExpectedData.getUserAgent(), data.getHeaders().getUserAgent());
+        Assertions.assertEquals(GetExpectedData.getAcceptEncoding(), data.getHeaders().getAcceptEncoding());
+        Assertions.assertEquals(GetExpectedData.getUrl(), data.getURL());
     }
 }
