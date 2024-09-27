@@ -4,21 +4,46 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class GetData {
+public class PostData {
 
     @JsonProperty("args")
     private Args args;
+    @JsonProperty("data")
+    private Object data;
+    public Object getData(){
+        return data;
+    }
+
+    @JsonProperty("files")
+    private Files files;
+    @JsonProperty("form")
+    private Form form;
     @JsonProperty("headers")
     private Headers headers;
+    @JsonProperty("json")
+    private Object json;
+    public Object getJson(){
+        return json;
+    }
+
     @JsonProperty("url")
     private String url;
-
-    public String getURL(){
+    public String getUrl(){
         return url;
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
     public class Args{
+
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public class Files{
+
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public class Form{
 
     }
 
@@ -38,6 +63,12 @@ public class GetData {
         private String connection;
         public String getConnection(){
             return connection;
+        }
+
+        @JsonProperty("content-length")
+        private String contentLength;
+        public String getContentLength(){
+            return contentLength;
         }
 
         @JsonProperty("x-forwarded-proto")
@@ -72,7 +103,7 @@ public class GetData {
 
         private String accept;
         public String getAccept(){
-            return accept;
+            return  accept;
         }
 
         @JsonProperty("accept-encoding")
@@ -86,8 +117,8 @@ public class GetData {
         }
     }
 
-    public GetData() {
-
+    public void showInfo(){
+        System.out.println(headers.getHost());
     }
 
     public Headers getHeaders(){
@@ -95,5 +126,3 @@ public class GetData {
     }
 
 }
-
-

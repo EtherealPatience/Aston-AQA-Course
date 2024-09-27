@@ -1,42 +1,52 @@
 package Methods;
 
-import POJO.GetData;
-import Specs.GetSpecs;
+import POJO.PostData;
+import Specs.PostSpecs;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class GetMethod {
+public class PostMethod {
+
     @Test
-    public void testGetMethod(){
+    public void testPostMethod(){
+        String reqBody = "{\n" +
+                "    \"test\": \"value\"\n" +
+                "}";
+
         String hostExpected = "postman-echo.com";
         String connectionExpected = "close";
+        String expectedContentLength = "23";
         String xForwardedProtoExpected = "https";
         String xForwardedPortExpected = "443";
         String contentTypeExpected = "application/json";
         String acceptExpected = "*/*";
         String userAgentExpected = "Apache-HttpClient/4.5.13 (Java/11.0.24)";
         String acceptEncodingExpected = "gzip,deflate";
-        String urlExpected = "https://postman-echo.com/get/";
+        String urlExpected = "https://postman-echo.com/post";
 
-        GetData data = GetSpecs.request.
+        PostData data = PostSpecs.request.
                 when().
-                    get("get/").
+                    body(reqBody).
+                    post("/post").
                 then().
-                    spec(GetSpecs.response).
+                    spec(PostSpecs.response).
                     log().body().
-                    extract().as(GetData.class);
+                    extract().as(PostData.class);
 
         Assertions.assertEquals(hostExpected, data.getHeaders().getHost());
         Assertions.assertNotNull(data.getHeaders().getxRequestStart());
         Assertions.assertEquals(connectionExpected, data.getHeaders().getConnection());
+        Assertions.assertEquals(expectedContentLength, data.getHeaders().getContentLength());
         Assertions.assertEquals(xForwardedProtoExpected, data.getHeaders().getxForwardedProto());
         Assertions.assertEquals(xForwardedPortExpected, data.getHeaders().getxForwardedPort());
         Assertions.assertNotNull(data.getHeaders().getxAmznTraceId());
-        Assertions.assertEquals(contentTypeExpected, data.getHeaders().getContentType());
         Assertions.assertEquals(acceptExpected, data.getHeaders().getAccept());
+        Assertions.assertEquals(contentTypeExpected, data.getHeaders().getContentType());
         Assertions.assertEquals(userAgentExpected, data.getHeaders().getUserAgent());
         Assertions.assertEquals(acceptEncodingExpected, data.getHeaders().getAcceptEncoding());
-        Assertions.assertEquals(urlExpected, data.getURL());
-
+        Assertions.assertNotNull(data.getJson());
+        Assertions.assertNotNull(data.getData());
+        Assertions.assertEquals(urlExpected, data.getUrl());
     }
 }
