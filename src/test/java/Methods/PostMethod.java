@@ -1,14 +1,18 @@
 package Methods;
 
 import ExpectedData.PostExpectedData;
+import ExpectedData.PostWithParamsExpectedData;
 import POJO.PostData;
 import Specs.PostSpecs;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import Specs.PostWithParamsSpecs;
+import org.junit.jupiter.api.*;
 
+import java.util.HashMap;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PostMethod {
 
+    @Order(1)
     @Test
     public void testPostMethod(){
         String reqBody = "{\n" +
@@ -24,6 +28,8 @@ public class PostMethod {
                     log().body().
                     extract().as(PostData.class);
 
+        PostExpectedData.updateURL();
+
         Assertions.assertEquals(PostExpectedData.getHost(), data.getHeaders().getHost());
         Assertions.assertNotNull(data.getHeaders().getxRequestStart());
         Assertions.assertEquals(PostExpectedData.getConnection(), data.getHeaders().getConnection());
@@ -37,7 +43,41 @@ public class PostMethod {
         Assertions.assertEquals(PostExpectedData.getAcceptEncoding(), data.getHeaders().getAcceptEncoding());
         Assertions.assertNotNull(data.getJson());
         Assertions.assertNotNull(data.getData());
-        PostExpectedData.updateURL();
         Assertions.assertEquals(PostExpectedData.getUrl(), data.getUrl());
+    }
+
+    @Order(2)
+    @Test
+    public void testPostWithParamsMethod(){
+        HashMap<String, String> params = new HashMap<>();
+        params.put("foo1", "bar1");
+        params.put("foo2", "bar2");
+
+        PostData data = PostWithParamsSpecs.request.
+                when().
+                    formParams(params).
+                    post("/post").
+                then().
+                    spec(PostWithParamsSpecs.response).
+                    log().body().
+                    extract().as(PostData.class);
+
+        PostWithParamsExpectedData.updateExpectedFields();
+
+        Assertions.assertEquals(PostWithParamsExpectedData.getHost(), data.getHeaders().getHost());
+        Assertions.assertNotNull(data.getHeaders().getxRequestStart());
+        Assertions.assertEquals(PostWithParamsExpectedData.getConnection(), data.getHeaders().getConnection());
+        Assertions.assertEquals(PostWithParamsExpectedData.getContentLength(), data.getHeaders().getContentLength());
+        Assertions.assertEquals(PostWithParamsExpectedData.getxForwardedProto(), data.getHeaders().getxForwardedProto());
+        Assertions.assertEquals(PostWithParamsExpectedData.getxForwardedPort(), data.getHeaders().getxForwardedPort());
+        Assertions.assertNotNull(data.getHeaders().getxAmznTraceId());
+        Assertions.assertEquals(PostWithParamsExpectedData.getAccept(), data.getHeaders().getAccept());
+        Assertions.assertEquals(PostWithParamsExpectedData.getContentType(), data.getHeaders().getContentType());
+        Assertions.assertEquals(PostWithParamsExpectedData.getUserAgent(), data.getHeaders().getUserAgent());
+        Assertions.assertEquals(PostWithParamsExpectedData.getAcceptEncoding(), data.getHeaders().getAcceptEncoding());
+        Assertions.assertNull(data.getJson());
+        Assertions.assertNotNull(data.getData());
+        Assertions.assertEquals(PostWithParamsExpectedData.getUrl(), data.getUrl());
+
     }
 }

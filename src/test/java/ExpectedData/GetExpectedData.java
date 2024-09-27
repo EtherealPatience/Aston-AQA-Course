@@ -30,6 +30,9 @@ abstract public class GetExpectedData {
     public static String getContentType(){
         return contentType;
     }
+    public static void setContentType(String contentType){
+        GetExpectedData.contentType = contentType;
+    }
 
     public static String getAccept(){
         return accept;
