@@ -35,7 +35,5 @@ public class PutMethod {
         Assertions.assertNull(data.getJson());
         Assertions.assertNotNull(data.getData());
         Assertions.assertEquals(PutExpectedData.getUrl(), data.getUrl());
-
     }
-
 }

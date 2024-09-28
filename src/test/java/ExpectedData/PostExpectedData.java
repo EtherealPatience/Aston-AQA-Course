@@ -3,9 +3,11 @@ package ExpectedData;
 abstract public class PostExpectedData extends GetExpectedData{
     private static String contentLength = "23";
     private static String newURL = "https://postman-echo.com/post";
+
     public static String getNewURL(){
         return newURL;
     }
+
     public static void setContentLength(String contentLength){
         PostExpectedData.contentLength = contentLength;
     }
@@ -15,6 +17,6 @@ abstract public class PostExpectedData extends GetExpectedData{
     }
 
     public static void updateExpectedFields(){
-        setUrl(getNewURL());
+        setUrl(newURL);
     }
 }
