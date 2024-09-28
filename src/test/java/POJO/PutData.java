@@ -4,22 +4,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class PostData {
-
+public class PutData {
     @JsonProperty("args")
     private Args args;
+
     @JsonProperty("data")
-    private Object data;
-    public Object getData(){
+    private String data;
+    public String getData(){
         return data;
     }
 
-    @JsonProperty("files")
-    private Files files;
     @JsonProperty("form")
     private Form form;
+
+    @JsonProperty("files")
+    private Files files;
+
     @JsonProperty("headers")
     private Headers headers;
+
     @JsonProperty("json")
     private Object json;
     public Object getJson(){
@@ -120,5 +123,4 @@ public class PostData {
     public Headers getHeaders(){
         return headers;
     }
-
 }
