@@ -4,10 +4,12 @@ import ExpectedData.GetExpectedData;
 import POJO.GetData;
 import Specs.GetSpecs;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class GetMethod {
     @Test
+    @DisplayName("Тестирование метода GET: Проверка соответствия ожидаемых полей в response с фактическими")
     public void testGetMethod(){
         GetData data = GetSpecs.request.
                 when().

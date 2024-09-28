@@ -4,11 +4,13 @@ import ExpectedData.PutExpectedData;
 import POJO.PutData;
 import Specs.PutSpecs;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class PutMethod {
 
     @Test
+    @DisplayName("Тестирование метода PUT: Проверка соответствия ожидаемых полей в response с фактическими")
     public void testPutMethod(){
         PutData data = PutSpecs.request.
                 when().

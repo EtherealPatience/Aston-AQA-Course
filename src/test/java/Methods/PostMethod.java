@@ -14,6 +14,7 @@ public class PostMethod {
 
     @Order(1)
     @Test
+    @DisplayName("Тестирование метода POST: Проверка соответствия ожидаемых полей в response с фактическими")
     public void testPostMethod(){
         String reqBody = "{\n" +
                 "    \"test\": \"value\"\n" +
@@ -48,6 +49,7 @@ public class PostMethod {
 
     @Order(2)
     @Test
+    @DisplayName("Тестирование метода POST с параметрами")
     public void testPostWithParamsMethod(){
         HashMap<String, String> params = new HashMap<>();
         params.put("foo1", "bar1");

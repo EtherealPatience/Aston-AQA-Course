@@ -4,10 +4,12 @@ import ExpectedData.PatchExpectedData;
 import POJO.PatchData;
 import Specs.PatchSpecs;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class PatchMethod {
     @Test
+    @DisplayName("Тестирование метода PATCH: Проверка соответствия ожидаемых полей в response с фактическими")
     public void testPatchMethod(){
 
         PatchData data = PatchSpecs.request.
