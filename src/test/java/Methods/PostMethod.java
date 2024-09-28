@@ -28,7 +28,7 @@ public class PostMethod {
                     log().body().
                     extract().as(PostData.class);
 
-        PostExpectedData.updateURL();
+        PostExpectedData.updateExpectedFields();
 
         Assertions.assertEquals(PostExpectedData.getHost(), data.getHeaders().getHost());
         Assertions.assertNotNull(data.getHeaders().getxRequestStart());

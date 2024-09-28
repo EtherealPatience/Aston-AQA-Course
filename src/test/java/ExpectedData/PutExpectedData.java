@@ -1,6 +1,6 @@
 package ExpectedData;
 
-public class PutExpectedData extends PostExpectedData{
+abstract public class PutExpectedData extends PostExpectedData{
     private static String data = "This is expected to be sent back as part of response body.";
     private static String newURL = "https://postman-echo.com/put";
     private static String newConentLength = "58";
